@@ -1,38 +1,315 @@
-.App {
-  text-align: center;
+body {
+  margin: 0;
+  background: #0f172a;
+  color: #f1f5f9;
+  font-family: 'Helvetica Neue', sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
+.main-site {
+  padding: 2rem;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin: 0;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin: 0.5rem 0 2rem;
+  opacity: 0.75;
+}
+
+.ecg-line {
+  height: 2px;
+  background: #38bdf8;
+  box-shadow: 0 0 8px #38bdf8;
+  width: 100%;
+}
+
+.grid-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+:root[data-theme='light'] {
+  --bg: #f8fafc;
+  --card-bg: rgba(255, 255, 255, 0.6);
+  --text: #1f2937;
+  --secondary-text: #6b7280;
+  --accent: #0ea5e9;
+}
+
+:root[data-theme='dark'] {
+  --bg: #0f172a;
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --text: #f1f5f9;
+  --secondary-text: #94a3b8;
+  --accent: #38bdf8;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.3s, color 0.3s;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.hero-profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.profile-pic {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+}
+
+.hero-text h1 {
+  font-size: 2.5rem;
+  margin: 0;
+}
+
+.hero-text p {
+  font-size: 1.2rem;
+  opacity: 0.75;
+  margin: 0.25rem 0;
+}
+
+.vitals-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 1rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.vitals-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 500;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 6px rgba(56, 189, 248, 0.05);
+  transition: transform 0.2s ease;
+}
+
+.vitals-list li:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.2);
+}
+
+.vitals-list span {
+  font-size: 0.95rem;
+  color: var(--secondary-text);
+}
+
+.vitals-list strong {
+  font-size: 1.2rem;
+  color: var(--accent);
+}
+
+.scroll-section {
+  min-height: 100vh;
+  padding: 8vh 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: var(--color-text);
+}
+
+.section-content {
+  max-width: 1000px;
+  text-align: center;
+  z-index: 2;
+  padding: 2rem;
+}
+
+.cards-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+  perspective: 1000px;
+}
+
+@media (min-width: 768px) {
+  .cards-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .cards-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.timeline {
+  position: relative;
+  padding-left: 2rem;
+  border-left: 2px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.timeline-item {
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -11px;
+  top: 6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  border: 2px solid white;
+}
+
+.timeline-content h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.3rem;
+}
+
+.timeline-content p {
+  font-size: 0.95rem;
+  opacity: 0.85;
+  line-height: 1.5;
+}
+
+.scroll-progress-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  width: 100%;
+  background: transparent;
+  z-index: 1000;
+}
+
+.scroll-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: var(--color-primary);
+  transition: width 0.1s ease-out;
+  box-shadow: 0 0 10px var(--color-primary);
+}
+
+
+.particles {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  z-index: -2;
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  animation: floatParticle 20s linear infinite;
+  opacity: 0.6;
+}
+
+@keyframes floatParticle {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateY(-100vh) scale(1.2);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-200vh) scale(1);
+    opacity: 0;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Random placement on load */
+.particle:nth-child(odd) {
+  width: 2px;
+  height: 2px;
+}
+.particle:nth-child(1) { left: 10%; top: 90%; animation-delay: 0s; }
+.particle:nth-child(2) { left: 30%; top: 95%; animation-delay: 1s; }
+.particle:nth-child(3) { left: 50%; top: 98%; animation-delay: 2s; }
+.particle:nth-child(4) { left: 70%; top: 92%; animation-delay: 3s; }
+.particle:nth-child(5) { left: 85%; top: 99%; animation-delay: 4s; }
+/* Add more or use JS for random values */
+
+.hero-pfp {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 1.5rem auto;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.4),
+              0 0 40px rgba(56, 189, 248, 0.15);
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: transform 0.2s ease;
+}
+
+
+.hero-pfp:hover {
+  transform: scale(1.05);
+}
+
+.card-content {
+  position: relative;
+  height: 100%;
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease;
+}
+
+/* This keeps the footer pushed to the bottom */
+.card-footer {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  transform: translateZ(15px);
 }
 
-.App-link {
-  color: #61dafb;
+
+.about-list {
+  list-style: disc inside;
+  padding-left: 0;
+  margin: 1rem 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}

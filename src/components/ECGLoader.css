@@ -1,0 +1,41 @@
+.ecg-loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: radial-gradient(circle, #050505 0%, #000 100%);
+  z-index: 9999;
+  transition: opacity 0.8s ease;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.ecg-loader-container.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.ecg-wrapper {
+  text-align: center;
+  min-height: 200px;
+}
+
+svg {
+  max-width: 90%;
+  height: auto;
+}
+
+path {
+  stroke-dasharray: 250;
+  stroke-dashoffset: 0;
+  animation: dash 3s linear infinite forwards;
+  stroke: #38bdf8;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 500;
+  }
+}
