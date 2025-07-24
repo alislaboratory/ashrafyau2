@@ -153,7 +153,7 @@ function App() {
                   My journey into medicine was sparked by curiosity and solidified through real patient experiences.
                 </p>
                 <ul class="about-list">
-                  <li>🏅 Recipient of >$100K AUD in scholarships</li>
+                  <li>🏅 Full-ride scholarship at UNSW Medicine (Over $100k AUD in scholarships awarded)</li>
                   <li>🛠️ Currently maintaining a high-distinction grade</li>
                 </ul>
                 <p>
